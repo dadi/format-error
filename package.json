@@ -1,0 +1,22 @@
+{
+  "name": "@dadi/format-error",
+  "version": "1.0.0",
+  "description": "Create API error objects for DADI applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "string-template": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dadi/format-error.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dadi/format-error/issues"
+  },
+  "homepage": "https://github.com/dadi/format-error",
+  "author": "James Lambie <jameslambie@gmail.com>",
+  "license": "MIT"
+}

@@ -1,0 +1,18 @@
+{
+  "api": {
+    "0001": {
+      "code": "API-0001",
+      "title": "Missing Index Key",
+      "details": "'{field}' is specified as the primary sort field, but is missing from the index key collection.",
+      "params": ["field"]
+    }
+  },
+  "web": {
+    "0005": {
+      "code": "WEB-0005",
+      "title": "Datasource Timeout",
+      "details": "The datasource '{datasource.name}' timed out: '{response.statusMessage} ({response.statusCode})': Endpoint: '{datasource.endpoint}'",
+      "params": ["datasource", "response"]
+    }
+  }
+}
