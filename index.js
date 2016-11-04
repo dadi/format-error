@@ -13,6 +13,6 @@ function createError (product, code, params) {
   var error = codes[product.toLowerCase()][code]
   delete error.params
   error.details = format(error.details, params)
-  error.docLink = 'http://docs.dadi.io/' + product + '/errors/' + product.toUpperCase() + '-' + code
+  error.docLink = 'http://docs.dadi.tech/' + product + '/errors/' + product.toUpperCase() + '-' + code
   return error
 }
