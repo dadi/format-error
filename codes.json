@@ -5,6 +5,12 @@
       "title": "Missing Index Key",
       "details": "'{field}' is specified as the primary sort field, but is missing from the index key collection.",
       "params": ["field"]
+    },
+    "0002": {
+      "code": "API-0002",
+      "title": "Hook Error",
+      "details": "The hook '{hookName}' failed: '{errorMessage}'",
+      "params": ["hookName", "errorMessage"]
     }
   },
   "web": {
