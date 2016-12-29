@@ -11,6 +11,12 @@
       "title": "Hook Error",
       "details": "The hook '{hookName}' failed: '{errorMessage}'",
       "params": ["hookName", "errorMessage"]
+    },
+    "0003": {
+      "code": "API-0003",
+      "title": "Cache Path Missing",
+      "details": "`path` must be specified in the request body.",
+      "params": []
     }
   },
   "web": {
