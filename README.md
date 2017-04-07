@@ -28,6 +28,6 @@ var error = formatError.createApiError('0001', { field: 'publicationDate' })
   "code": "API-0001",
   "title": "Missing Index Key",
   "details": "'publicationDate' is specified as the primary sort field, but is missing from the index key collection.",
-  "docLink": "http://docs.dadi.io/api/errors/API-0001"
+  "docLink": "http://docs.dadi.tech/errors/api/API-0001"
 }
 ```

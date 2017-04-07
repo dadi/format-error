@@ -3,13 +3,13 @@
     "0001": {
       "code": "API-0001",
       "title": "Missing Index Key",
-      "details": "'{field}' is specified as the primary sort field, but is missing from the index key collection.",
+      "details": "'${field}' is specified as the primary sort field, but is missing from the index key collection.",
       "params": ["field"]
     },
     "0002": {
       "code": "API-0002",
       "title": "Hook Error",
-      "details": "The hook '{hookName}' failed: '{errorMessage}'",
+      "details": "The hook '${hookName}' failed: '${errorMessage}'",
       "params": ["hookName", "errorMessage"]
     },
     "0003": {
@@ -20,11 +20,23 @@
     }
   },
   "web": {
+    "0004": {
+      "code": "WEB-0004",
+      "title": "Datasource Not Found",
+      "details": "The datasource '${datasource.name}' failed: ${response.statusMessage} (${response.statusCode}): Endpoint: '${datasource.endpoint}'",
+      "params": ["datasource", "response"]
+    },
     "0005": {
       "code": "WEB-0005",
       "title": "Datasource Timeout",
-      "details": "The datasource '{datasource.name}' timed out: '{response.statusMessage} ({response.statusCode})': Endpoint: '{datasource.endpoint}'",
+      "details": "The datasource '${datasource.name}' timed out: ${response.statusMessage} (${response.statusCode}): Endpoint: '${datasource.endpoint}'",
       "params": ["datasource", "response"]
+    },
+    "0006": {
+      "code": "WEB-0006",
+      "title": "No markdown files found",
+      "details": "The path '${sourcePath}' could not be found",
+      "params": ["sourcePath"]
     }
   }
 }
