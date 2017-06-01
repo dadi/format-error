@@ -17,7 +17,7 @@ function createError (product, data, params) {
   var error
 
   // Is this a custom error?
-  if (typeof data !== 'string') {
+  if (typeof data !== 'string' && typeof data !== 'number') {
     error = Object.assign({}, data)
 
     error.code = data.code || product.toUpperCase() + '-CUSTOM'
