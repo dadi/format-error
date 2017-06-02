@@ -65,6 +65,33 @@ describe('Error Formatting', function (done) {
     })
   })
 
+  describe('Custom Errors', function () {
+    it('should return a custom error object is the input is not a string', function (done) {
+      var errorObject = {
+        code: 'PUBLISH-AUTH',
+        message: 'The authentication failed',
+        remainingAttempts: 3
+      }
+      var err = formatError.createApiError(errorObject)
+
+      JSON.stringify(err).should.eql(JSON.stringify(errorObject))
+
+      done()
+    })
+
+    it('should attach a default code to a custom error if one is not provided', function (done) {
+      var errorObject = {
+        message: 'Something has failed'
+      }
+      var err = formatError.createApiError(errorObject)
+
+      err.message.should.eql(errorObject.message)
+      err.code.should.eql('API-CUSTOM')
+
+      done()
+    })
+  })
+
   describe('Unknown Errors', function () {
     it('should return the code in place of an error', function (done) {
       var err = formatError.createApiError('1001', { field: 'author' })

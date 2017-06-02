@@ -13,18 +13,28 @@ module.exports.createWebError = function (code, params) {
   return createError('web', code, params)
 }
 
-function createError (product, code, params) {
-  var error = codes[product.toLowerCase()][code]
+function createError (product, data, params) {
+  var error
 
-  if (!error) {
-    error = {
-      code: `${product.toUpperCase()}-${code}`
-    }
+  // Is this a custom error?
+  if (typeof data !== 'string' && typeof data !== 'number') {
+    error = Object.assign({}, data)
+
+    error.code = data.code || product.toUpperCase() + '-CUSTOM'
   } else {
-    delete error.params
-    error.details = template(error.details, params)
+    error = codes[product.toLowerCase()][data]
+
+    if (!error) {
+      error = {
+        code: `${product.toUpperCase()}-${data}`
+      }
+    } else {
+      delete error.params
+      error.details = template(error.details, params)
+    }
+
+    error.docLink = 'http://docs.dadi.tech/errors/' + product + '/' + product.toUpperCase() + '-' + data
   }
 
-  error.docLink = 'http://docs.dadi.tech/errors/' + product + '/' + product.toUpperCase() + '-' + code
   return error
 }
