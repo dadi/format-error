@@ -66,27 +66,42 @@ describe('Error Formatting', function (done) {
   })
 
   describe('Custom Errors', function () {
-    it('should return a custom error object is the input is not a string', function (done) {
-      var errorObject = {
-        code: 'PUBLISH-AUTH',
-        message: 'The authentication failed',
-        remainingAttempts: 3
-      }
-      var err = formatError.createApiError(errorObject)
+    it('should return a custom error object if the error contains a `dadiCustomError` property', function (done) {
+      var customError1 = new Error('Custom error 1')
 
-      JSON.stringify(err).should.eql(JSON.stringify(errorObject))
+      customError1.dadiCustomError = {
+        code: 'SLUG_ALREADY_EXISTS',
+        document: {
+          _id: 123456
+        }
+      }
+
+      var formattedError = formatError.createApiError('0002', {
+        error: customError1,
+        hookName: 'myHook1'
+      })
+
+      JSON.stringify(formattedError).should.eql(JSON.stringify(customError1.dadiCustomError))
 
       done()
     })
 
-    it('should attach a default code to a custom error if one is not provided', function (done) {
-      var errorObject = {
-        message: 'Something has failed'
-      }
-      var err = formatError.createApiError(errorObject)
+    it('should attach a default code property to a custom error if one is not provided', function (done) {
+      var customError1 = new Error('Custom error 1')
 
-      err.message.should.eql(errorObject.message)
-      err.code.should.eql('API-CUSTOM')
+      customError1.dadiCustomError = {
+        document: {
+          _id: 123456
+        }
+      }
+
+      var formattedError = formatError.createApiError('0002', {
+        error: customError1,
+        hookName: 'myHook1'
+      })
+
+      formattedError.code.should.eql('API-CUSTOM')
+      JSON.stringify(formattedError.document).should.eql(JSON.stringify(customError1.dadiCustomError.document))
 
       done()
     })
