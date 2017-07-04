@@ -65,7 +65,7 @@ describe('Error Formatting', function (done) {
     })
   })
 
-  describe.only('Custom Errors', function () {
+  describe('Custom Errors', function () {
     it('should return a custom error object if the error contains a `dadiCustomError` property', function (done) {
       var customError1 = new Error('Custom error 1')
 
