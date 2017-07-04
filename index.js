@@ -17,10 +17,10 @@ function createError (product, data, params) {
   var error
 
   // Is this a custom error?
-  if (typeof data !== 'string' && typeof data !== 'number') {
-    error = Object.assign({}, data)
+  if (params.error && params.error.dadiCustomError) {
+    error = params.error.dadiCustomError
 
-    error.code = data.code || product.toUpperCase() + '-CUSTOM'
+    error.code = error.code || product.toUpperCase() + '-CUSTOM'
   } else {
     error = codes[product.toLowerCase()][data]
 
