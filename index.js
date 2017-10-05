@@ -33,7 +33,7 @@ function createError (product, data, params) {
       error.details = template(error.details, params)
     }
 
-    error.docLink = 'http://docs.dadi.tech/errors/' + product + '/' + product.toUpperCase() + '-' + data
+    error.docLink = 'https://docs.dadi.tech/#' + product + '/' + product.toLowerCase() + '-' + data
   }
 
   return error
