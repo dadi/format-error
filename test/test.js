@@ -24,7 +24,8 @@ describe('Error Formatting', function (done) {
     it('should return Hook error', function (done) {
       var err = formatError.createApiError('0002', { hookName: 'slugify', errorMessage: 'error' })
       err.code.should.eql('API-0002')
-      err.details.should.eql("The hook 'slugify' failed: 'error'")
+      //err.details.should.eql("The hook 'slugify' failed: 'error'")
+      err.details.should.eql('error')
       done()
     })
   })
@@ -111,7 +112,7 @@ describe('Error Formatting', function (done) {
     it('should return the code in place of an error', function (done) {
       var err = formatError.createApiError('1001', { field: 'author' })
       err.code.should.eql('API-1001')
-      err.docLink.should.eql('http://docs.dadi.tech/errors/api/API-1001')
+      err.docLink.should.eql('https://docs.dadi.tech/#api/api-1001')
       done()
     })
   })
