@@ -9,7 +9,7 @@
     "0002": {
       "code": "API-0002",
       "title": "Hook Error",
-      "details": "${errorMessage}",
+      "details": "${hookName} - ${errorMessage}",
       "params": ["hookName", "errorMessage"]
     },
     "0003": {
