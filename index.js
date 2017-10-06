@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 var codes = require('./codes.json')
 var template = require('backtick-template')
