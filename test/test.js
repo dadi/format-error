@@ -25,7 +25,7 @@ describe('Error Formatting', function (done) {
       var err = formatError.createApiError('0002', { hookName: 'slugify', errorMessage: 'error' })
       err.code.should.eql('API-0002')
       //err.details.should.eql("The hook 'slugify' failed: 'error'")
-      err.details.should.eql('error')
+      err.details.indexOf('error').should.not.eql(-1)
       done()
     })
   })

@@ -1,3 +1,5 @@
+'use strict'
+
 var codes = require('./codes.json')
 var template = require('backtick-template')
 
@@ -21,15 +23,28 @@ function createError (product, data, params) {
     error = params.error.dadiCustomError
 
     error.code = error.code || product.toUpperCase() + '-CUSTOM'
-  } else {
-    error = codes[product.toLowerCase()][data]
 
-    if (!error) {
+    Object.keys(params).forEach(param => {
+      if (param !== 'error') error[param] = params[param]
+    })
+  } else {
+    error = Object.assign({}, codes[product.toLowerCase()][data])
+
+    if (!error.code) {
       error = {
         code: `${product.toUpperCase()}-${data}`
       }
     } else {
+      Object.keys(params).forEach(param => {
+        if (!Object.keys(error.params).includes(param)) {
+          error[param] = params[param]
+        }
+      })
+
       delete error.params
+      delete error.error
+      delete error.errorMessage
+
       error.details = template(error.details, params)
     }
 
