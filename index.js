@@ -16,6 +16,8 @@ module.exports.createWebError = function (code, params) {
 }
 
 function createError (product, data, params) {
+  params = params || {}
+
   var error
 
   // Is this a custom error?
