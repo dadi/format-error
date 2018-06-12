@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "istanbul": "^1.1.0-alpha.1",
-    "istanbul-cobertura-badger": "latest",
+    "istanbul-cobertura-badger": "1.3.1",
     "mocha": "5.2.0",
     "semantic-release": "15.1.4",
     "should": "^11.2.1",
