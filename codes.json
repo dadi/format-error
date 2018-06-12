@@ -25,6 +25,14 @@
       "params": []
     }
   },
+  "cdn": {
+    "0001": {
+      "code": "CDN-0001",
+      "title": "CDN Error",
+      "details": "",
+      "params": []
+    }
+  },
   "web": {
     "0004": {
       "code": "WEB-0004",
