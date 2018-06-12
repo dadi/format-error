@@ -48,6 +48,14 @@ describe('Error Formatting', function (done) {
       err.details.indexOf('error').should.not.eql(-1)
       done()
     })
+
+    it('should return DB unavailable error', function (done) {
+      var err = formatError.createApiError('0004')
+      err.code.should.eql('API-0004')
+      err.title.should.eql('Database unavailable')
+
+      done()
+    })
   })
 
   describe('Web Errors', function () {

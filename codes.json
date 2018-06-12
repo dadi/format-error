@@ -17,6 +17,12 @@
       "title": "Cache Path Missing",
       "details": "`path` must be specified in the request body.",
       "params": []
+    },
+    "0004": {
+      "code": "API-0004",
+      "title": "Database unavailable",
+      "details": "The database is currently unavailable. Please retry the request.",
+      "params": []
     }
   },
   "cdn": {
