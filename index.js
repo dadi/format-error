@@ -1,22 +1,22 @@
 'use strict'
 
-var codes = require('./codes.json')
-var template = require('backtick-template')
+const defaultCodes = require('./codes.json')
+const template = require('backtick-template')
 
 module.exports.createApiError = function (code, params) {
-  return createError('api', code, params)
+  return module.exports.createError('api', code, params)
 }
 
 module.exports.createCdnError = function (code, params) {
-  return createError('cdn', code, params)
+  return module.exports.createError('cdn', code, params)
 }
 
 module.exports.createWebError = function (code, params) {
-  return createError('web', code, params)
+  return module.exports.createError('web', code, params)
 }
 
-function createError (product, data, params) {
-  var error
+module.exports.createError = function (product, data, params, codes) {
+  let error
 
   // Is this a custom error?
   if (params.error && params.error.dadiCustomError) {
@@ -28,7 +28,7 @@ function createError (product, data, params) {
       if (param !== 'error') error[param] = params[param]
     })
   } else {
-    error = Object.assign({}, codes[product.toLowerCase()][data])
+    error = Object.assign({}, codes ? codes[data] : defaultCodes[product.toLowerCase()][data])
 
     if (!error.code) {
       error = {
@@ -37,7 +37,7 @@ function createError (product, data, params) {
     } else {
       Object.keys(params).forEach(param => {
         if (!Object.keys(error.params).includes(param)) {
-          error[param] = params[param]
+          error[param] = error[param] || params[param]
         }
       })
 
@@ -48,7 +48,7 @@ function createError (product, data, params) {
       error.details = template(error.details, params)
     }
 
-    error.docLink = 'https://docs.dadi.tech/#' + product + '/' + product.toLowerCase() + '-' + data
+    error.docLink = error.docLink || `https://docs.dadi.cloud/${product}/#${product.toLowerCase()}-${data}`
   }
 
   return error
