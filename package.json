@@ -4,7 +4,7 @@
   "description": "Create API error objects for DADI applications",
   "main": "index.js",
   "scripts": {
-    "test": "standard 'index.js' | snazzy && env NODE_ENV=test ./node_modules/.bin/istanbul cover --report cobertura --report text --report html --report lcov ./node_modules/mocha/bin/_mocha test",
+    "test": "standard 'lib/*.js' | snazzy && env NODE_ENV=test ./node_modules/.bin/istanbul cover --report cobertura --report text --report html --report lcov ./node_modules/mocha/bin/_mocha test",
     "posttest": "./scripts/coverage.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -12,7 +12,7 @@
     "backtick-template": "^0.1.1"
   },
   "devDependencies": {
-    "istanbul": "latest",
+    "istanbul": "^1.1.0-alpha.1",
     "istanbul-cobertura-badger": "latest",
     "mocha": "5.2.0",
     "semantic-release": "15.1.4",

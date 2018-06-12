@@ -1,5 +1,5 @@
 const should = require('should')
-const formatError = require('../index.js')
+const formatError = require('../../index.js')
 
 describe('Error Formatting', function (done) {
   beforeEach(function (done) {
@@ -32,7 +32,7 @@ describe('Error Formatting', function (done) {
   })
 
   describe('API Errors', function () {
-    let codes = require('../codes.json').api
+    let codes = require('../../codes.json').api
 
     it('should return Missing Index Key error', function (done) {
       let err = formatError.createError('api', '0001', { field: 'author' }, codes)
@@ -59,7 +59,7 @@ describe('Error Formatting', function (done) {
   })
 
   describe('Web Errors', function () {
-    let codes = require('../codes.json').web
+    let codes = require('../../codes.json').web
 
     it('should return Datasource Not Found error', function (done) {
       let datasource = {
@@ -98,7 +98,7 @@ describe('Error Formatting', function (done) {
   })
 
   describe('Custom Errors', function () {
-    let codes = require('../codes.json').api
+    let codes = require('../../codes.json').api
 
     it('should return a custom error object if the error contains a `dadiCustomError` property', function (done) {
       let customError1 = new Error('Custom error 1')
@@ -142,7 +142,7 @@ describe('Error Formatting', function (done) {
   })
 
   describe('Unknown Errors', function () {
-    let codes = require('../codes.json').api
+    let codes = require('../../codes.json').api
 
     it('should return the code in place of an error', function (done) {
       let err = formatError.createError('api', '1001', { field: 'author' }, codes)
@@ -153,7 +153,7 @@ describe('Error Formatting', function (done) {
   })
 
   describe('Documentation Link', function () {
-    let codes = require('../codes.json').api
+    let codes = require('../../codes.json').api
 
     it('should allow override of the docLink', function (done) {
       let err = formatError.createError('api', '0001', { field: 'author', docLink: 'https://google.com' }, codes)
